@@ -1,1 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+.ml5{
+	margin-left: 5px;
+}
+
+.ml10{
+	margin-left: 10px;
+}
+
+.ml15{
+	margin-left: 15px;
+}
+
+.mr5{
+	margin-right: 5px;
+}
+
+.mr10{
+	margin-right: 10px;
+}
+
+.mr15{
+	margin-right: 15px;
+}
+
+.mt5{
+	margin-top: 5px;
+}
+
+.mt10{
+	margin-top: 10px;
+}
+
+.mt15{
+	margin-top: 15px;
+}
+
+.mb5{
+	margin-bottom: 5px;
+}
+
+.mb10{
+	margin-bottom: 10px;
+}
+
+.mb15{
+	margin-bottom: 15px;
+}
+
+.pl5{
+	padding-left: 5px;
+}
+
+.pl10{
+	padding-left: 10px;
+}
+
+.pl15{
+	padding-left: 15px;
+}
+
+.pr5{
+	padding-right: 5px;
+}
+
+.pr10{
+	padding-right: 10px;
+}
+
+.pr15{
+	padding-right: 15px;
+}
+
+.pt5{
+	padding-top: 5px;
+}
+
+.pt10{
+	padding-top: 10px;
+}
+
+.pt15{
+	padding-top: 15px;
+}
+
+.pb5{
+	padding-bottom: 5px;
+}
+
+.pb10{
+	padding-bottom: 10px;
+}
+
+.pb15{
+	padding-bottom: 15px;
+}

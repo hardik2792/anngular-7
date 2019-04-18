@@ -1,21 +1,60 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar navbar-expand-sm bg-success">
+  <div class="container-fluid">
+    <ul class="navbar-nav header-text">
+      <li class="nav-item">
+        <a routerLink="todo" class="nav-link text-body active" routerLinkActive="active">
+          <i class="fa fa-calendar-week"></i>
+          Todo App
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="info" class="nav-link text-body" routerLinkActive="active">
+          <i class="fa fa-info-circle"></i>
+          Info
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav header-text">
+      <li class="nav-item">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info" ></i></button>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<router-outlet></router-outlet>
+<div class="app-container">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-info-circle"></i> About Author</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm text-center">
+            <img src="https://avatars0.githubusercontent.com/u/19735922?s=400&u=16d6b2a102474470c851277f327b69e64bc06163&v=4" alt="Author's Image" height="200px" width="200px">
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-sm text-center">
+            <a class="mr-4 text-dark" href="https://github.com/hardik2792"><i class="fab fa-github"></i> </a>
+            <a class="mr-4" href="https://www.linkedin.com/in/hardik-thakor-075860123/"><i class="fab fa-linkedin-in"></i> </a>
+            <a class="mr-4" href="https://hardik2792.github.io/"><i class="fa fa-globe"></i> </a>
+            <a class="mr-4" href="mailto:hardikthakor2792@gmail.com"><i class="fa fa-envelope"></i> </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

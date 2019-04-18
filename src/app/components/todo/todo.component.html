@@ -1,0 +1,75 @@
+<div class="container-fluid text-center">
+	<h3> Todo App</h3>
+	<div class="add-todo-form mt15">
+    <div class="row">
+			<form [formGroup]="todoForm" class="col-10" novalidate>
+    		<div class="row">
+	    		<div class="col-6">
+	    			<input type="text" class="form-control" formControlName="details" placeholder="Details about Task TO DO ">
+	    		</div>
+	    		<div class="col-2">
+	    			<select>
+	    				<option value="low">Low</option>
+	    				<option value="normal">Normal</option>
+	    				<option value="high">High</option>
+	    			</select>
+	    		</div>
+	    		<div class="col-2">
+	    			<button type="submit" class="btn btn-outline-success"><i class="fa fa-plus" ></i></button>
+	    		</div>
+	    	</div>
+    	</form>
+  		<div class="col-2">
+  			<button type="button" class="btn btn-outline-dark"><i class="fa fa-file-excel" ></i></button>
+  			<button type="button" class="btn btn-outline-dark  ml-1"><i class="fa fa-file-csv" ></i></button>
+  		</div>
+    </div>
+	</div>
+	<div class="mt15">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				  	<th scope="col">No</th>
+				  	<th scope="col">First</th>
+				  	<th scope="col">Last</th>
+				  	<th scope="col" class="action-col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>
+						<button type="button" class="btn btn-outline-success" (click)="markComplete()"><i class="fa fa-check" ></i></button>
+						<button type="button" class="btn btn-outline-primary ml-1" (click)="copyTodo()"><i class="fa fa-copy" ></i></button>
+						<button type="button" class="btn btn-outline-info ml-1" (click)="editTodo()"><i class="fa fa-pen" ></i></button>
+						<button type="button" class="btn btn-outline-danger ml-1" (click)="trashTodo()"><i class="fa fa-trash" ></i></button>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>
+						<button type="button" class="btn btn-outline-success"><i class="fa fa-check" ></i></button>
+						<button type="button" class="btn btn-outline-primary ml-1"><i class="fa fa-copy" ></i></button>
+						<button type="button" class="btn btn-outline-info ml-1"><i class="fa fa-pen" ></i></button>
+						<button type="button" class="btn btn-outline-danger ml-1"><i class="fa fa-trash" ></i></button>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>
+						<button type="button" class="btn btn-outline-success" ><i class="fa fa-check" ></i></button>
+						<button type="button" class="btn btn-outline-primary ml-1"><i class="fa fa-copy" ></i></button>
+						<button type="button" class="btn btn-outline-info ml-1"><i class="fa fa-pen" ></i></button>
+						<button type="button" class="btn btn-outline-danger ml-1"><i class="fa fa-trash" ></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

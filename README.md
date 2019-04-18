@@ -1,6 +1,6 @@
-# Mean7
+# Angular Boiler Plate[Angular 7]
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
+Angular 7 Boiler Plate for beginner.
 
 ## Development server
 
