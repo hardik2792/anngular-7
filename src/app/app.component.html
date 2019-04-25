@@ -1,15 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand-sm bg-success">
+<nav class="navbar navbar-expand-sm header-bg">
   <div class="container-fluid">
     <ul class="navbar-nav header-text">
       <li class="nav-item">
-        <a routerLink="todo" class="nav-link text-body active" routerLinkActive="active">
+        <a routerLink="todo" class="nav-link text-white active" routerLinkActive="active">
           <i class="fa fa-calendar-week"></i>
           Todo App
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="info" class="nav-link text-body" routerLinkActive="active">
+        <a routerLink="info" class="nav-link text-white" routerLinkActive="active">
           <i class="fa fa-info-circle"></i>
           Info
         </a>
@@ -17,19 +17,19 @@
     </ul>
     <ul class="navbar-nav header-text">
       <li class="nav-item">
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info" ></i></button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info" ></i></button>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="app-container">
+<div class="app-container text-white">
   <router-outlet></router-outlet>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content bg-secondary text-white">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-info-circle"></i> About Author</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,24 +37,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
+        <div class="row text-center">
           <div class="col-sm text-center">
-            <img src="https://avatars0.githubusercontent.com/u/19735922?s=400&u=16d6b2a102474470c851277f327b69e64bc06163&v=4" alt="Author's Image" height="200px" width="200px">
+            <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="hardik-thakor-075860123"><a class="LI-simple-link" href='https://in.linkedin.com/in/hardik-thakor-075860123?trk=profile-badge'>Hardik Thakor</a></div>
           </div>
         </div>
         <div class="row mt-4">
           <div class="col-sm text-center">
-            <a class="mr-4 text-dark" href="https://github.com/hardik2792"><i class="fab fa-github"></i> </a>
-            <a class="mr-4" href="https://www.linkedin.com/in/hardik-thakor-075860123/"><i class="fab fa-linkedin-in"></i> </a>
-            <a class="mr-4" href="https://hardik2792.github.io/"><i class="fa fa-globe"></i> </a>
-            <a class="mr-4" href="mailto:hardikthakor2792@gmail.com"><i class="fa fa-envelope"></i> </a>
+            <a class="mr-4 text-dark" thref="https://github.com/hardik2792"><i class="fab fa-github"></i> </a>
+            <a class="mr-4 text-info" href="live:hardik_thakor"><i class="fab fa-skype"></i> </a>
+            <a class="mr-4 text-danger" href="https://hardik2792.github.io/"><i class="fa fa-globe"></i> </a>
+            <a class="mr-4 text-warn" href="mailto:hardikthakor2792@gmail.com"><i class="fa fa-envelope"></i> </a>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+

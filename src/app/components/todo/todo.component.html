@@ -2,26 +2,37 @@
 	<h3> Todo App</h3>
 	<div class="add-todo-form mt15">
     <div class="row">
-			<form [formGroup]="todoForm" class="col-10" novalidate>
+		<form [formGroup]="todoForm" class="col-10" novalidate (ngSubmit)="addtodo()">
     		<div class="row">
 	    		<div class="col-6">
 	    			<input type="text" class="form-control" formControlName="details" placeholder="Details about Task TO DO ">
 	    		</div>
 	    		<div class="col-2">
-	    			<select>
+	    			<!-- <select>
 	    				<option value="low">Low</option>
 	    				<option value="normal">Normal</option>
 	    				<option value="high">High</option>
-	    			</select>
+	    			</select> -->
+	    			<div class="btn-group dropright">
+						  <button type="button" class="btn btn-outline-primary dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Click to select your Tasks Priority">
+						    {{priority ? priority : 'Priorities'}}
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						    <a class="dropdown-item" (click)="priority='low'">Low</a>
+						    <a class="dropdown-item" (click)="priority='normal'">Normal</a>
+						    <a class="dropdown-item" (click)="priority='high'">High</a>
+						  </div>
+						</div>
 	    		</div>
 	    		<div class="col-2">
-	    			<button type="submit" class="btn btn-outline-success"><i class="fa fa-plus" ></i></button>
+	    			<button type="submit" class="btn btn-outline-success" [disabled]="todoForm.invalid" ><i class="fa fa-plus" ></i></button>
 	    		</div>
 	    	</div>
     	</form>
   		<div class="col-2">
-  			<button type="button" class="btn btn-outline-dark"><i class="fa fa-file-excel" ></i></button>
-  			<button type="button" class="btn btn-outline-dark  ml-1"><i class="fa fa-file-csv" ></i></button>
+  			<button type="button" class="btn btn-outline-light" (click)="generatingFile('spreadSheet')"><i class="fa fa-file-excel" ></i></button>
+  			<button type="button" class="btn btn-outline-light ml-1" (click)="generatingFile('csv')"><i class="fa fa-file-csv" ></i></button>
+  			<button type="button" class="btn btn-outline-light ml-1" (click)="dbBackUp()"><i class="fa fa-trash-restore-alt" ></i></button>
   		</div>
     </div>
 	</div>
@@ -29,44 +40,47 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-				  	<th scope="col">No</th>
-				  	<th scope="col">First</th>
-				  	<th scope="col">Last</th>
+				  	<th scope="col" class="col-2">No</th>
+				  	<th scope="col" class="col-4">Detail</th>
+				  	<th scope="col" class="">Priorities</th>
+				  	<th scope="col" class="">Status</th>
 				  	<th scope="col" class="action-col">Action</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>
-						<button type="button" class="btn btn-outline-success" (click)="markComplete()"><i class="fa fa-check" ></i></button>
-						<button type="button" class="btn btn-outline-primary ml-1" (click)="copyTodo()"><i class="fa fa-copy" ></i></button>
-						<button type="button" class="btn btn-outline-info ml-1" (click)="editTodo()"><i class="fa fa-pen" ></i></button>
-						<button type="button" class="btn btn-outline-danger ml-1" (click)="trashTodo()"><i class="fa fa-trash" ></i></button>
+			<tbody class="text-white">
+				<tr *ngFor="let todo of todoList; index as i">
+					<th scope="row">{{i+1}}</th>
+					<td class="text-left">
+						<div *ngIf="!todo.isEdit">
+							{{todo.details}}
+						</div>
+						<div class="input-group mb-3" *ngIf="todo.isEdit">
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th"></i></span>
+						  </div>
+						  <input type="text" class="form-control" placeholder="Todo Details" [(ngModel)]="todo.details">
+						</div>
 					</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
 					<td>
-						<button type="button" class="btn btn-outline-success"><i class="fa fa-check" ></i></button>
-						<button type="button" class="btn btn-outline-primary ml-1"><i class="fa fa-copy" ></i></button>
-						<button type="button" class="btn btn-outline-info ml-1"><i class="fa fa-pen" ></i></button>
-						<button type="button" class="btn btn-outline-danger ml-1"><i class="fa fa-trash" ></i></button>
+						<!-- {{todo.priority}} -->
+						<div class="btn-group dropright">
+						  <button type="button" class="btn btn-outline-primary dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Click to select your Tasks Priority">
+						    {{todo.priority ? todo.priority : 'Priority'}}
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						    <a class="dropdown-item" (click)="todo.priority='low';updatetodo(todo)">Low</a>
+						    <a class="dropdown-item" (click)="todo.priority='normal';updatetodo(todo)">Normal</a>
+						    <a class="dropdown-item" (click)="todo.priority='high';updatetodo(todo)">High</a>
+						  </div>
+						</div>
 					</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
+					<td>{{todo.isCompleted ? 'Completed' : 'Pending'}}</td>
 					<td>
-						<button type="button" class="btn btn-outline-success" ><i class="fa fa-check" ></i></button>
-						<button type="button" class="btn btn-outline-primary ml-1"><i class="fa fa-copy" ></i></button>
-						<button type="button" class="btn btn-outline-info ml-1"><i class="fa fa-pen" ></i></button>
-						<button type="button" class="btn btn-outline-danger ml-1"><i class="fa fa-trash" ></i></button>
+						<button type="button" class="btn btn-sm btn-outline-success" title="Mark Todo as Complete" (click)="markComplete(todo)"><i class="fa fa-check" ></i></button>
+						<button type="button" class="btn btn-sm btn-outline-primary ml-1" title="Copy Todo" (click)="copyTodo(todo._id)"><i class="fa fa-copy" ></i></button>
+						<button type="button" class="btn btn-sm btn-outline-info ml-1" title="Edit Todo" (click)="todo.isEdit = !todo.isEdit" *ngIf="!todo.isEdit"><i class="fa fa-pen" ></i></button>
+						<button type="button" class="btn btn-sm btn-outline-info ml-1" title="Save Todo" (click)="updatetodo(todo)" *ngIf="todo.isEdit"><i class="fa fa-save" ></i></button>
+						<button type="button" class="btn btn-sm btn-outline-danger ml-1" title="Delete Todo" (click)="trashTodo(todo._id)"><i class="fa fa-trash" ></i></button>
 					</td>
 				</tr>
 			</tbody>

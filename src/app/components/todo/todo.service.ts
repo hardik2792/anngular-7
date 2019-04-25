@@ -15,16 +15,43 @@ export class TodoService {
 
 	// URLs
   private POINTER: string = environment.SERVER_PATH;
-  private GET_TODO_URL: string = this.POINTER+"/signIn";
+  private ADD_TODO_URL : string = this.POINTER+"/addtodo";
+  private GET_TODO_URL : string = this.POINTER+"/gettodo";
+  private UPDATE_TODO_URL : string = this.POINTER+"/updatetodo";
+  private GENERATE_FILE: string = this.POINTER+"/generatingFile";
 
   constructor(private http: HttpClient) { }
 
-  // For Authenticating Employee
-  authEmployee(authData): Observable<{}> {
-      return this.http.post(this.GET_TODO_URL, authData).pipe(
-        map(this.extractData),
-        catchError(this.handleError)
-      );
+  // To add Todo to List
+  addtodo(todo): Observable<{}> {
+    return this.http.post(this.ADD_TODO_URL, todo).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  // To Get list of Todos
+  gettodo(): Observable<{}> {
+    return this.http.get(this.GET_TODO_URL).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  // To Update Particular Todo
+  updatetodo(todo): Observable<{}> {
+    return this.http.put(this.UPDATE_TODO_URL,todo).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  //Generating File
+  generatingFile(type): Observable<{}> {
+    return this.http.get(this.GENERATE_FILE,{params:{type:type}}).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
   }
 
   // For Response Beautifier
@@ -42,7 +69,7 @@ export class TodoService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    console.error(JSON.stringify(error.error));
+    console.error(error);
     return Observable.throw(errMsg);
   }
 }
