@@ -4,7 +4,7 @@
 
 export const environment = {
   	production: false,
-	SERVER_PATH: 'http://192.168.0.106:4000'
+	SERVER_PATH: 'http://127.0.0.1:4000'
 };
 
 /*

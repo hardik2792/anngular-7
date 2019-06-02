@@ -8,11 +8,6 @@
 	    			<input type="text" class="form-control" formControlName="details" placeholder="Details about Task TO DO ">
 	    		</div>
 	    		<div class="col-2">
-	    			<!-- <select>
-	    				<option value="low">Low</option>
-	    				<option value="normal">Normal</option>
-	    				<option value="high">High</option>
-	    			</select> -->
 	    			<div class="btn-group dropright">
 						  <button type="button" class="btn btn-outline-primary dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Click to select your Tasks Priority">
 						    {{priority ? priority : 'Priorities'}}
@@ -30,9 +25,9 @@
 	    	</div>
     	</form>
   		<div class="col-2">
-  			<button type="button" class="btn btn-outline-light" (click)="generatingFile('spreadSheet')"><i class="fa fa-file-excel" ></i></button>
-  			<button type="button" class="btn btn-outline-light ml-1" (click)="generatingFile('csv')"><i class="fa fa-file-csv" ></i></button>
-  			<button type="button" class="btn btn-outline-light ml-1" (click)="dbBackUp()"><i class="fa fa-trash-restore-alt" ></i></button>
+  			<button type="button" class="btn btn-outline-light" title="Click to Generate Spreadsheet" (click)="generatingFile('spreadSheet')"><i class="fa fa-file-excel" ></i></button>
+  			<button type="button" class="btn btn-outline-light ml-1" title="Click to Generate CSV" (click)="generatingFile('csv')"><i class="fa fa-file-csv" ></i></button>
+  			<button type="button" class="btn btn-outline-light ml-1" title="Click to Generate DB Dump" (click)="dbBackUp()"><i class="fa fa-trash-restore-alt" ></i></button>
   		</div>
     </div>
 	</div>
@@ -40,16 +35,16 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-				  	<th scope="col" class="col-2">No</th>
-				  	<th scope="col" class="col-4">Detail</th>
-				  	<th scope="col" class="">Priorities</th>
-				  	<th scope="col" class="">Status</th>
-				  	<th scope="col" class="action-col">Action</th>
+			  	<th scope="col" class="col-2">No</th>
+			  	<th scope="col" class="col-4">Detail</th>
+			  	<th scope="col" class="">Priorities</th>
+			  	<th scope="col" class="">Status</th>
+			  	<th scope="col" class="action-col">Action</th>
 				</tr>
 			</thead>
 			<tbody class="text-white">
 				<tr *ngFor="let todo of todoList; index as i">
-					<th scope="row">{{i+1}}</th>
+					<td scope="row">{{i+1}}</td>
 					<td class="text-left">
 						<div *ngIf="!todo.isEdit">
 							{{todo.details}}
@@ -62,10 +57,9 @@
 						</div>
 					</td>
 					<td>
-						<!-- {{todo.priority}} -->
 						<div class="btn-group dropright">
 						  <button type="button" class="btn btn-outline-primary dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Click to select your Tasks Priority">
-						    {{todo.priority ? todo.priority : 'Priority'}}
+						    {{todo.priority ? todo.priority : 'Low'}}
 						  </button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						    <a class="dropdown-item" (click)="todo.priority='low';updatetodo(todo)">Low</a>
